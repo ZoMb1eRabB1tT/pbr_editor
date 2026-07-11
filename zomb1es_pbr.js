@@ -100,12 +100,7 @@
         }
         return true;
     }
-
-    // A freshly-created/not-yet-rendered canvas reads back as fully
-    // transparent black. A legitimate authored texture that happens to be
-    // solid black (e.g. an all-black roughness map) is still opaque, so
-    // checking alpha alongside RGB avoids mistaking real content for an
-    // empty canvas.
+    
     function isBlankCanvas(bytes) {
         for (let i = 0; i < bytes.length; i += 4) {
             if (bytes[i] !== 0 || bytes[i + 1] !== 0 || bytes[i + 2] !== 0 || bytes[i + 3] !== 0) {
